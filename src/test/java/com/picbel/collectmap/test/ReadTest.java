@@ -1,6 +1,6 @@
 package com.picbel.collectmap.test;
 
-import com.picbel.collectmap.app.model.GooglePlaceMark;
+import com.picbel.collectmap.app.model.placemark.google.GooglePlaceMark;
 import com.picbel.collectmap.app.component.KMLReader;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Node;

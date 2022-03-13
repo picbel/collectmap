@@ -1,4 +1,4 @@
-package com.picbel.collectmap.app.model;
+package com.picbel.collectmap.app.model.placemark.google;
 
 import lombok.Data;
 import lombok.ToString;

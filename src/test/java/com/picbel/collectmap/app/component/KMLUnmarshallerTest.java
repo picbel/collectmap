@@ -1,6 +1,6 @@
 package com.picbel.collectmap.app.component;
 
-import com.picbel.collectmap.app.model.GooglePlaceMark;
+import com.picbel.collectmap.app.model.placemark.google.GooglePlaceMark;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.w3c.dom.NodeList;
@@ -14,7 +14,7 @@ class KMLUnmarshallerTest {
 
     @ParameterizedTest
     @MethodSource(PROVIDE_KML_PATH_AND_TAG)
-    void unmarshal(String kmlPath, String tag) {
+    void KML파일을_unmarshall하여_GooglePlaceMark리스트로_반환한다(String kmlPath, String tag) {
         //given
         KMLReader reader = new KMLReader();
         NodeList nodeList = reader.parse(kmlPath, tag);
