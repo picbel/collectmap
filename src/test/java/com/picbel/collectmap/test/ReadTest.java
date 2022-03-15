@@ -2,6 +2,11 @@ package com.picbel.collectmap.test;
 
 import com.picbel.collectmap.app.model.placemark.google.GooglePlaceMark;
 import com.picbel.collectmap.app.component.KMLReader;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -9,6 +14,9 @@ import org.w3c.dom.NodeList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +45,22 @@ class ReadTest {
     }
 
     @Test
-    void excelTest(){
+    void excelTest() throws IOException {
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Google map");
+        Row titleRow = sheet.createRow(0);
+        Cell titleCell = titleRow.createCell(0);
+        titleCell.setCellValue("cell value");
 
+
+        File currDir = new File(".");                // 현재 프로젝트 경로를 가져옴
+        String path = currDir.getAbsolutePath();
+        String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";    // 파일명 설정
+
+
+        FileOutputStream fileOutputStream = new FileOutputStream(fileLocation);        // 파일 생성
+        workbook.write(fileOutputStream);                                            // 엑셀파일로 작성
+        workbook.close();
     }
 }
 
