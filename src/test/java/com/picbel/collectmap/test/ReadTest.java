@@ -48,9 +48,12 @@ class ReadTest {
     void excelTest() throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Google map");
+
         Row titleRow = sheet.createRow(0);
-        Cell titleCell = titleRow.createCell(0);
-        titleCell.setCellValue("cell value");
+        for (int i = 0; i < 10; i++) {
+            Cell titleCell = titleRow.createCell(i);
+            titleCell.setCellValue("cell value = "+i);
+        }
 
 
         File currDir = new File(".");                // 현재 프로젝트 경로를 가져옴

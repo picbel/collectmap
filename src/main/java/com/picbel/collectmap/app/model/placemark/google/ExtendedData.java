@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,6 +15,6 @@ public class ExtendedData {
 
     @XmlElementWrapper(name = "Data")
     @XmlElement(name = "value")
-    List<String> values;
+    List<String> values = new ArrayList<>();
 
 }
