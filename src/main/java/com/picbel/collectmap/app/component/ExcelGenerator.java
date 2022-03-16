@@ -51,10 +51,13 @@ public class ExcelGenerator {
         cell1.setCellValue("장소 설명");
 
         Cell cell2 = titleRow.createCell(2);
-        cell2.setCellValue("장소 좌표");
+        cell2.setCellValue("경도");
 
         Cell cell3 = titleRow.createCell(3);
-        cell3.setCellValue("추가 정보");
+        cell3.setCellValue("위도");
+
+        Cell cell4 = titleRow.createCell(4);
+        cell4.setCellValue("추가 정보");
         return sheet;
     }
 
@@ -65,17 +68,20 @@ public class ExcelGenerator {
             row++;
 
             Cell cell0 = titleRow.createCell(0);
-            cell0.setCellValue(googlePlaceMark.getName());
+            cell0.setCellValue(googlePlaceMark.name());
 
             Cell cell1 = titleRow.createCell(1);
-            cell1.setCellValue(googlePlaceMark.getDescription());
+            cell1.setCellValue(googlePlaceMark.description());
 
             Cell cell2 = titleRow.createCell(2);
-            cell2.setCellValue(googlePlaceMark.getPoint().getCoordinates());
+            cell2.setCellValue(googlePlaceMark.coordinateX());
+
+            Cell cell3 = titleRow.createCell(3);
+            cell3.setCellValue(googlePlaceMark.coordinateY());
 
             if (Objects.nonNull(googlePlaceMark.getExtendedData())) {
-                Cell cell3 = titleRow.createCell(3);
-                cell3.setCellValue(googlePlaceMark.getExtendedData().getValues().toString());
+                Cell cell4 = titleRow.createCell(4);
+                cell4.setCellValue(googlePlaceMark.getExtendedData().getValues().toString());
             }
         }
     }
